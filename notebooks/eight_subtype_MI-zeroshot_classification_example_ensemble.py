@@ -103,4 +103,4 @@ for fold in range(1, 11):
         best_j_idx = np.argmax(list(results['acc'].values()))
         best_j = list(results['acc'].keys())[best_j_idx]
         for metric, metric_dict in results.items():
-            print(f"{fold}-{dataset_name}-{metric}: {metric_dict[best_j]:.3f}")
+            print(f"{fold}-{dataset_name}-{metric}: {metric_dict[best_j]:.6f}")
