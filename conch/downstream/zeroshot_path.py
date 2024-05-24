@@ -57,7 +57,7 @@ def topj_pooling(logits, topj):
 @torch.no_grad()
 def run_mizero(model, classifier, dataloader, device, topj = (1,5,10,50,100), 
         dump_results = False, dump_patch_level = False, 
-        metrics=['acc', 'bacc', 'weighted_kappa', 'kappa', 'roc_auc', 'weighted_f1']):                                            
+        metrics=['acc', 'bacc', 'weighted_kappa', 'kappa', 'roc_auc', 'weighted_f1'], eight_sutype=False, label_shift=0):
         
     dict_keys = list(topj)
     meters = {j: AverageMeter() for j in dict_keys}
@@ -65,6 +65,9 @@ def run_mizero(model, classifier, dataloader, device, topj = (1,5,10,50,100),
     logits_all, targets_all, patch_logits_all, coords_all, preds_all = {}, [], [], [], {}
     for idx, data in enumerate(tqdm(dataloader)): # batch size is always 1, 
         image_features = data['img'].to(device).squeeze(0)
+
+        data['label'] = data['label'] + label_shift
+
         target = data['label'].to(device)
         coords = data['coords']
         
@@ -72,8 +75,8 @@ def run_mizero(model, classifier, dataloader, device, topj = (1,5,10,50,100),
             coords = coords.squeeze(0).numpy()
         coords_all.append(coords)
 
-        image_features = model.visual.forward_project(image_features)            
-        image_features = F.normalize(image_features, dim=-1) 
+        # image_features = model.visual.forward_project(image_features)
+        # image_features = F.normalize(image_features, dim=-1)
         logits = image_features @ classifier
         
         if dump_results and dump_patch_level:
@@ -96,51 +99,59 @@ def run_mizero(model, classifier, dataloader, device, topj = (1,5,10,50,100),
     probs_all = {key: F.softmax(torch.from_numpy(logits_all[key]) * model.logit_scale.exp().item(), dim=1).numpy() for key in dict_keys}
     # Compute metrics
     preds_all = {key: np.array(preds_all[key]) for key in dict_keys}
-    baccs = {key: balanced_accuracy_score(targets_all, val) for key, val in preds_all.items()}
-    cls_rep = {key: classification_report(targets_all, val, output_dict=True, zero_division=0) for key, val in preds_all.items()}
-    kappas = {key: cohen_kappa_score(targets_all, val) for key, val in preds_all.items()}
-    weighted_kappas = {key: cohen_kappa_score(targets_all, val, weights='quadratic') for key, val in preds_all.items()}
-    roc_aucs = {}
-    for key, probs in probs_all.items():
-        n_classes = probs.shape[1]
-        if n_classes == 2:
-            class_probs = probs[:,1]
-            roc_kwargs = {}
-        else:
-            class_probs = probs
-            roc_kwargs = {'multi_class': 'ovo', 'average': 'macro'}        
-        try:
-            roc_auc = roc_auc_score(targets_all, class_probs, **roc_kwargs)
-        except ValueError:
-            roc_auc = np.nan
-        roc_aucs[key] = roc_auc
 
-    # Get final accuracy across all images
-    accs = {j: meters[j].avg for j in topj}
+    if eight_sutype:
+        results = {
+            'acc': {j: meters[j].avg for j in topj}
+        }
 
-    dump = {}
-    results = {'acc': accs, 
-            'bacc': baccs, 
-            'report': cls_rep, 
-            'kappa': kappas,
-            'weighted_kappa': weighted_kappas, # quadratic weights
-            'roc_auc': roc_aucs,
-            'weighted_f1': {key: cls_rep[key]['weighted avg']['f1-score'] for key in dict_keys}}
-    results = {k: results[k] for k in metrics}
-    if dump_results:
-        # dump slide level predictions
-        dump['logits'] = logits_all
-        dump['targets'] = targets_all
-        dump['preds'] = preds_all
-        if hasattr(model, "logit_scale"):
-            dump['temp_scale'] = model.logit_scale.exp().item()
-        
-        # dump patch level predictions + coordinates
-        if dump_patch_level: 
-            dump['patch_logits'] = patch_logits_all
-            dump['coords'] = coords_all
+        return results
+    else:
+        baccs = {key: balanced_accuracy_score(targets_all, val) for key, val in preds_all.items()}
+        cls_rep = {key: classification_report(targets_all, val, output_dict=True, zero_division=0) for key, val in preds_all.items()}
+        kappas = {key: cohen_kappa_score(targets_all, val) for key, val in preds_all.items()}
+        weighted_kappas = {key: cohen_kappa_score(targets_all, val, weights='quadratic') for key, val in preds_all.items()}
+        roc_aucs = {}
+        for key, probs in probs_all.items():
+            n_classes = probs.shape[1]
+            if n_classes == 2:
+                class_probs = probs[:,1]
+                roc_kwargs = {}
+            else:
+                class_probs = probs
+                roc_kwargs = {'multi_class': 'ovo', 'average': 'macro'}
+            try:
+                roc_auc = roc_auc_score(targets_all, class_probs, **roc_kwargs)
+            except ValueError:
+                roc_auc = np.nan
+            roc_aucs[key] = roc_auc
 
-    return results, dump
+        # Get final accuracy across all images
+        accs = {j: meters[j].avg for j in topj}
+
+        dump = {}
+        results = {'acc': accs,
+                'bacc': baccs,
+                'report': cls_rep,
+                'kappa': kappas,
+                'weighted_kappa': weighted_kappas, # quadratic weights
+                'roc_auc': roc_aucs,
+                'weighted_f1': {key: cls_rep[key]['weighted avg']['f1-score'] for key in dict_keys}}
+        results = {k: results[k] for k in metrics}
+        if dump_results:
+            # dump slide level predictions
+            dump['logits'] = logits_all
+            dump['targets'] = targets_all
+            dump['preds'] = preds_all
+            if hasattr(model, "logit_scale"):
+                dump['temp_scale'] = model.logit_scale.exp().item()
+
+            # dump patch level predictions + coordinates
+            if dump_patch_level:
+                dump['patch_logits'] = patch_logits_all
+                dump['coords'] = coords_all
+
+        return results, dump
 
 def dataloding_post_process(batch):
     if not isinstance(batch, dict):

@@ -3,6 +3,7 @@ from torch.utils.data import Dataset
 import h5py
 import numpy as np
 import torch
+import torch.nn.functional as F
 
 def infer_folder_structure(source, subdir_name):
     """infer the folder structure of the dataset."""
@@ -37,7 +38,7 @@ class WSIEmbeddingDataset(Dataset):
         
         # use h5 format or pt format
         self.use_h5 = use_h5
-        self.subdir_name = 'feats_h5' if use_h5 else 'feats_pt'
+        self.subdir_name = 'h5_files' if use_h5 else 'pt_files'
         self.ext = '.h5' if use_h5 else '.pt'
 
         # pid_slide_dict is a dictionary that maps patient id to slide ids
@@ -111,5 +112,5 @@ class WSIEmbeddingDataset(Dataset):
             if len(all_coords.shape) == 3:
                 all_coords = all_coords.squeeze(0)
         
-        out = {'img': all_features, 'label': label, 'coords': all_coords}
+        out = {'img': F.normalize(all_features, dim=-1), 'label': label, 'coords': all_coords}
         return out
