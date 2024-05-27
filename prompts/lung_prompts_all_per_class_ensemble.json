@@ -1,13 +1,13 @@
 {
     "0": {
         "classnames": {
-            "ESAD": [
-                "Esophageal adenocarcinoma",
-                "ESAD"
+            "LUAD": [
+                "lung adenocarcinoma",
+                "LUAD"
             ],
-            "ESCC": [
-                "Esophageal squamous cell carcinoma",
-                "ESCC"
+            "LUSC": [
+                "lung squamous cell carcinoma",
+                "LUSC"
             ]
         },
         "templates": [

@@ -1,13 +1,13 @@
 {
     "0": {
         "classnames": {
-            "IDC": [
-                "Invasive ductal carcinoma",
-                "IDC"
+            "CCRCC": [
+                "clear cell renal cell carcinoma",
+                "CCRCC"
             ],
-            "ILC": [
-                "Invasive lobular carcinoma",
-                "ILC"
+            "PRCC": [
+                "papillary renal cell carcinoma",
+                "PRCC"
             ]
         },
         "templates": [

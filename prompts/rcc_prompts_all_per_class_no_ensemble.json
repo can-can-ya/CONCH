@@ -1,0 +1,15 @@
+{
+    "0": {
+        "classnames": {
+            "CCRCC": [
+                "clear cell renal cell carcinoma"
+            ],
+            "PRCC": [
+                "papillary renal cell carcinoma"
+            ]
+        },
+        "templates": [
+            "a histopathological photograph showing CLASSNAME."
+        ]
+    }
+}

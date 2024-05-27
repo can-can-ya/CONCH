@@ -79,7 +79,7 @@ for fold in range(1, 11):
         print("num samples: ", len(dataloader.dataset))
         print(idx_to_class)
 
-        prompt_file = '/home/gjx/Code/CONCH/CONCH/prompts/' + dataset_name + '_prompts_all_per_class_ensemble.json'
+        prompt_file = '/home/gjx/Code/CONCH/CONCH/prompts/' + dataset_name + '_prompts_all_per_class_no_ensemble.json'
         with open(prompt_file) as f:
             prompts = json.load(f)['0']
         classnames = prompts['classnames']

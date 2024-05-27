@@ -36,6 +36,12 @@ all_label_map = {
     'rcc': {'CCRCC': 0, 'PRCC': 1},
     'esca': {'ESAD': 0, 'ESCC': 1}
 } # maps values in target_col to integers
+dataset_label_shift = {
+    'lung': 0,
+    'brca': 2,
+    'rcc': 4,
+    'esca': 6
+}
 
 def read_datasplit_npz(path: str):
     data_npz = np.load(path, allow_pickle=True)
@@ -75,11 +81,11 @@ for fold in range(1, 11):
                                 shuffle=False,
                                 num_workers=4)
 
-        idx_to_class = {v:k for k,v in dataloader.dataset.label_map.items()}
+        idx_to_class = {0: 'LUAD', 1: 'LUSC', 2: 'IDC', 3: 'ILC', 4: 'CCRCC', 5: 'PRCC', 6: 'ESAD', 7: 'ESCC'}
         print("num samples: ", len(dataloader.dataset))
         print(idx_to_class)
 
-        prompt_file = '/home/gjx/Code/CONCH/CONCH/prompts/' + dataset_name + '_prompts_all_per_class_ensemble.json'
+        prompt_file = '/home/gjx/Code/CONCH/CONCH/prompts/eight_subtype_prompts_all_per_class_no_ensemble.json'
         with open(prompt_file) as f:
             prompts = json.load(f)['0']
         classnames = prompts['classnames']
@@ -92,7 +98,7 @@ for fold in range(1, 11):
         zeroshot_weights = zero_shot_classifier(model, classnames_text, templates, device=device)
         print(zeroshot_weights.shape)
 
-        results, dump = run_mizero(model, zeroshot_weights, dataloader, device, metrics=['acc'])
+        results = run_mizero(model, zeroshot_weights, dataloader, device, eight_sutype=True, label_shift=dataset_label_shift[dataset_name])
 
         best_j_idx = np.argmax(list(results['acc'].values()))
         best_j = list(results['acc'].keys())[best_j_idx]

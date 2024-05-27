@@ -1,0 +1,33 @@
+{
+    "0": {
+        "classnames": {
+            "LUAD": [
+                "lung adenocarcinoma"
+            ],
+            "LUSC": [
+                "lung squamous cell carcinoma"
+            ],
+            "IDC": [
+                "invasive ductal carcinoma"
+            ],
+            "ILC": [
+                "invasive lobular carcinoma"
+            ],
+            "CCRCC": [
+                "clear cell renal cell carcinoma"
+            ],
+            "PRCC": [
+                "papillary renal cell carcinoma"
+            ],
+            "ESAD": [
+                "esophageal adenocarcinoma"
+            ],
+            "ESCC": [
+                "esophageal squamous cell carcinoma"
+            ]
+        },
+        "templates": [
+            "a histopathological photograph showing CLASSNAME."
+        ]
+    }
+}

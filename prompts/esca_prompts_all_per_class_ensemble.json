@@ -1,13 +1,13 @@
 {
     "0": {
         "classnames": {
-            "CCRCC": [
-                "Clear cell renal cell carcinoma",
-                "CCRCC"
+            "ESAD": [
+                "esophageal adenocarcinoma",
+                "ESAD"
             ],
-            "PRCC": [
-                "Papillary renal cell carcinoma",
-                "PRCC"
+            "ESCC": [
+                "esophageal squamous cell carcinoma",
+                "ESCC"
             ]
         },
         "templates": [

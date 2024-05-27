@@ -1,0 +1,15 @@
+{
+    "0": {
+        "classnames": {
+            "LUAD": [
+                "lung adenocarcinoma"
+            ],
+            "LUSC": [
+                "lung squamous cell carcinoma"
+            ]
+        },
+        "templates": [
+            "a histopathological photograph showing CLASSNAME."
+        ]
+    }
+}
