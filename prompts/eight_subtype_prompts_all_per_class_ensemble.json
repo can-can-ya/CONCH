@@ -3,34 +3,48 @@
         "classnames": {
             "LUAD": [
                 "lung adenocarcinoma",
+                "adenocarcinoma of the lung",
                 "LUAD"
             ],
             "LUSC": [
                 "lung squamous cell carcinoma",
+                "squamous cell carcinoma of the lung",
                 "LUSC"
             ],
             "IDC": [
                 "invasive ductal carcinoma",
-                "IDC"
+                "breast invasive ductal carcinoma",
+                "invasive ductal carcinoma of the breast",
+                "invasive carcinoma of the breast, ductal pattern",
+                "breast IDC"
             ],
             "ILC": [
                 "invasive lobular carcinoma",
-                "ILC"
+                "breast invasive lobular carcinoma",
+                "invasive lobular carcinoma of the breast",
+                "invasive carcinoma of the breast, lobular pattern",
+                "breast ILC"
             ],
             "CCRCC": [
                 "clear cell renal cell carcinoma",
-                "CCRCC"
+                "renal cell carcinoma, clear cell type",
+                "renal cell carcinoma of the clear cell type",
+                "clear cell RCC"
             ],
             "PRCC": [
                 "papillary renal cell carcinoma",
-                "PRCC"
+                "renal cell carcinoma, papillary type",
+                "renal cell carcinoma of the papillary type",
+                "papillary RCC"
             ],
             "ESAD": [
                 "esophageal adenocarcinoma",
+                "adenocarcinoma of the esophageal",
                 "ESAD"
             ],
             "ESCC": [
                 "esophageal squamous cell carcinoma",
+                "squamous cell carcinoma of the esophageal",
                 "ESCC"
             ]
         },

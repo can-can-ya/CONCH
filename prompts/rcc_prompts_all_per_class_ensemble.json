@@ -3,11 +3,15 @@
         "classnames": {
             "CCRCC": [
                 "clear cell renal cell carcinoma",
-                "CCRCC"
+                "renal cell carcinoma, clear cell type",
+                "renal cell carcinoma of the clear cell type",
+                "clear cell RCC"
             ],
             "PRCC": [
                 "papillary renal cell carcinoma",
-                "PRCC"
+                "renal cell carcinoma, papillary type",
+                "renal cell carcinoma of the papillary type",
+                "papillary RCC"
             ]
         },
         "templates": [

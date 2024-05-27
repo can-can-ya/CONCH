@@ -3,11 +3,17 @@
         "classnames": {
             "IDC": [
                 "invasive ductal carcinoma",
-                "IDC"
+                "breast invasive ductal carcinoma",
+                "invasive ductal carcinoma of the breast",
+                "invasive carcinoma of the breast, ductal pattern",
+                "breast IDC"
             ],
             "ILC": [
                 "invasive lobular carcinoma",
-                "ILC"
+                "breast invasive lobular carcinoma",
+                "invasive lobular carcinoma of the breast",
+                "invasive carcinoma of the breast, lobular pattern",
+                "breast ILC"
             ]
         },
         "templates": [

@@ -3,10 +3,12 @@
         "classnames": {
             "LUAD": [
                 "lung adenocarcinoma",
+                "adenocarcinoma of the lung",
                 "LUAD"
             ],
             "LUSC": [
                 "lung squamous cell carcinoma",
+                "squamous cell carcinoma of the lung",
                 "LUSC"
             ]
         },

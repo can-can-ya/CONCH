@@ -3,10 +3,12 @@
         "classnames": {
             "ESAD": [
                 "esophageal adenocarcinoma",
+                "adenocarcinoma of the esophageal",
                 "ESAD"
             ],
             "ESCC": [
                 "esophageal squamous cell carcinoma",
+                "squamous cell carcinoma of the esophageal",
                 "ESCC"
             ]
         },
