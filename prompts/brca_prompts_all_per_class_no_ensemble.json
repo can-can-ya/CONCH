@@ -2,14 +2,14 @@
     "0": {
         "classnames": {
             "IDC": [
-                "invasive ductal carcinoma"
+                "The most common type of breast cancer, characterized by the formation of duct-like structures within the breast tissue, distinct cellular atypia, and a fibrous stroma surrounding invasive tumor cells"
             ],
             "ILC": [
-                "invasive lobular carcinoma"
+                "A subtype of breast cancer, characterized by small, uniform tumor cells that invade the stroma in a single-file pattern, often without forming ducts or glandular structures, and typically exhibiting low cell cohesion"
             ]
         },
         "templates": [
-            "an image of CLASSNAME."
+            "CLASSNAME."
         ]
     }
 }

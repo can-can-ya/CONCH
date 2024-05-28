@@ -2,32 +2,32 @@
     "0": {
         "classnames": {
             "LUAD": [
-                "lung adenocarcinoma"
+                "A primary subtype of non-small cell lung cancer, is primarily located in the peripheral lung tissues. It frequently exhibits mutations in EGFR or ALK and presents a solid and papillary architectures"
             ],
             "LUSC": [
-                "lung squamous cell carcinoma"
+                "A common subtype of non-small cell lung cancer, typically originates in the central bronchi. The tumor cells display prominent nucleoli, with significant inflammatory reactions in the stroma"
             ],
             "IDC": [
-                "invasive ductal carcinoma"
+                "The most common type of breast cancer, characterized by the formation of duct-like structures within the breast tissue, distinct cellular atypia, and a fibrous stroma surrounding invasive tumor cells"
             ],
             "ILC": [
-                "invasive lobular carcinoma"
+                "A subtype of breast cancer, characterized by small, uniform tumor cells that invade the stroma in a single-file pattern, often without forming ducts or glandular structures, and typically exhibiting low cell cohesion"
             ],
             "CCRCC": [
-                "clear cell renal cell carcinoma"
+                "A subtype of kidney cancer, characterized by the presence of clear, lipid-rich cytoplasm in the tumor cells, a delicate vascular network surrounding these cells, and generally well-defined tumor margins"
             ],
             "PRCC": [
-                "papillary renal cell carcinoma"
+                "A subtype of kidney cancer, characterized by the presence of papillary structures lined with cells having prominent nucleoli and low-grade, basophilic cytoplasm, often accompanied by a fibrovascular core within the papillae"
             ],
             "ESAD": [
-                "esophageal adenocarcinoma"
+                "A subtype of esophageal cancer, characterized by glandular differentiation of the tumor cells, often arising from Barrett’s esophagus with mucin production, and typically showing irregular glandular structures and invasive growth patterns"
             ],
             "ESCC": [
-                "esophageal squamous cell carcinoma"
+                "A subtype of esophageal cancer, characterized by the presence of keratinization and intercellular bridges in tumor cells, often forming sheets and nests, with varying degrees of cellular differentiation and dysplasia"
             ]
         },
         "templates": [
-            "an image of CLASSNAME."
+            "CLASSNAME."
         ]
     }
 }

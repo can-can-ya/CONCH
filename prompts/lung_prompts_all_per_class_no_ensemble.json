@@ -2,14 +2,14 @@
     "0": {
         "classnames": {
             "LUAD": [
-                "lung adenocarcinoma"
+                "A primary subtype of non-small cell lung cancer, is primarily located in the peripheral lung tissues. It frequently exhibits mutations in EGFR or ALK and presents a solid and papillary architectures"
             ],
             "LUSC": [
-                "lung squamous cell carcinoma"
+                "A common subtype of non-small cell lung cancer, typically originates in the central bronchi. The tumor cells display prominent nucleoli, with significant inflammatory reactions in the stroma"
             ]
         },
         "templates": [
-            "an image of CLASSNAME."
+            "CLASSNAME."
         ]
     }
 }

@@ -2,14 +2,14 @@
     "0": {
         "classnames": {
             "ESAD": [
-                "esophageal adenocarcinoma"
+                "A subtype of esophageal cancer, characterized by glandular differentiation of the tumor cells, often arising from Barrett’s esophagus with mucin production, and typically showing irregular glandular structures and invasive growth patterns"
             ],
             "ESCC": [
-                "esophageal squamous cell carcinoma"
+                "A subtype of esophageal cancer, characterized by the presence of keratinization and intercellular bridges in tumor cells, often forming sheets and nests, with varying degrees of cellular differentiation and dysplasia"
             ]
         },
         "templates": [
-            "an image of CLASSNAME."
+            "CLASSNAME."
         ]
     }
 }

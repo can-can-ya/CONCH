@@ -2,14 +2,14 @@
     "0": {
         "classnames": {
             "CCRCC": [
-                "clear cell renal cell carcinoma"
+                "A subtype of kidney cancer, characterized by the presence of clear, lipid-rich cytoplasm in the tumor cells, a delicate vascular network surrounding these cells, and generally well-defined tumor margins"
             ],
             "PRCC": [
-                "papillary renal cell carcinoma"
+                "A subtype of kidney cancer, characterized by the presence of papillary structures lined with cells having prominent nucleoli and low-grade, basophilic cytoplasm, often accompanied by a fibrovascular core within the papillae"
             ]
         },
         "templates": [
-            "an image of CLASSNAME."
+            "CLASSNAME."
         ]
     }
 }
