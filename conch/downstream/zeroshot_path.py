@@ -26,7 +26,8 @@ def zero_shot_classifier(model, classnames, templates, tokenizer=None, device=No
             token_ids = token_ids.to(device)
             classname_embeddings = model.encode_text(token_ids)
             # classname_embeddings: [num_templates, embedding_dim]
-            embeddings_for_class.append(F.normalize(classname_embeddings, dim=-1))
+            # embeddings_for_class.append(F.normalize(classname_embeddings, dim=-1))
+            embeddings_for_class.append(classname_embeddings)
 
         # class_embedding: [num_classnames, num_templates, embedding_dim]
         class_embedding = torch.stack(embeddings_for_class, dim=0)
