@@ -98,6 +98,10 @@ for fold in range(1, 11):
         zeroshot_weights = zero_shot_classifier(model, classnames_text, templates, device=device)
         print(zeroshot_weights.shape)
 
+        # compute cosine similarity
+        cos_sim = zeroshot_weights.t() @ zeroshot_weights
+        print(cos_sim)
+
         results = run_mizero(model, zeroshot_weights, dataloader, device, eight_sutype=True, label_shift=dataset_label_shift[dataset_name])
 
         best_j_idx = np.argmax(list(results['acc'].values()))
