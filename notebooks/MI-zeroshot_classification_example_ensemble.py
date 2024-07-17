@@ -92,7 +92,7 @@ for fold in range(1, 11):
         zeroshot_weights = zero_shot_classifier(model, classnames_text, templates, device=device)
         print(zeroshot_weights.shape)
 
-        results, dump = run_mizero(model, zeroshot_weights, dataloader, device, metrics=['acc'])
+        results, dump = run_mizero(model, zeroshot_weights, dataloader, device, metrics=['acc', 'roc_auc'])
 
         best_j_idx = np.argmax(list(results['acc'].values()))
         best_j = list(results['acc'].keys())[best_j_idx]
